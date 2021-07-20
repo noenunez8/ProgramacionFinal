@@ -1,0 +1,37 @@
+<%= form_with(model: article_of_clothing) do |form| %>
+  <% if article_of_clothing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article_of_clothing.errors.count, "error") %> prohibited this article_of_clothing from being saved:</h2>
+
+      <ul>
+        <% article_of_clothing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :type_of_garment %>
+    <%= form.text_field :type_of_garment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand_id %>
+    <%= form.collection_select(:brand_id, Brand.all, :id, :name)  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_with(model: issue) do |form| %>
+  <% if issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+        <% issue.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date_of_issue %>
+    <%= form.date_select :date_of_issue %>
+  </div>
+
+  <div class="field">
+
+    <%= form.label :program_number %>
+    <select name="issue[program_number]">
+      <option value="">seleccionar número de emisón</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= form.label :program_id %>
+    <%= form.collection_select(:program_id , Program.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :article_of_clothing_id %>
+    <%= form.collection_select(:article_of_clothing_id, ArticleOfClothing.all, :id, :type_of_garment)  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :article_of_clothing_id %>
+    <%= form.collection_select(:article_of_clothing_id, ArticleOfClothing.all, :id, :description)  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Issues</h1>
+<br>
+<form method="GET" action="/people">
+  Nombre del conductor: <input type="text" name="filter" />
+  <input type="submit" />
+</form>
+<br>
+<table class="table table-primary" >
+  <thead>
+    <tr>
+      <th>Date of issue</th>
+      <th>Program number</th>
+      <th>Program</th>
+      <th>Article of clothing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td><%= issue.date_of_issue %></td>
+        <td><%= issue.program_number %></td>
+        <td><%= issue.program.name %></td>
+        <td><%= issue.article_of_clothing.type_of_garment%></td>
+        <td><%= issue.article_of_clothing.description%></td>
+        <td><%= link_to 'Show', issue %></td>
+        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Issue', new_issue_path %>

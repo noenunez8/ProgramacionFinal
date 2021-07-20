@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-xl navbar" style="background-color: #42F1BD;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Program<strong>TV</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight" aria-controls="navbarLight"  aria-expanded="false" aria-label="Toggle navigation"  >
+      <span class="navbar-toggler-icon" ></span>
+    </button>
+    <div class="collapse navbar-collapse show" id="navbarLight">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+
+        <li class="nav-item">
+          <%= link_to "Conductores", people_path, class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Programa", programs_path, class: 'nav-link'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Emisión", issues_path, class: 'nav-link'  %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Vestuario", article_of_clothings_path, class: 'nav-link'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Marcas", brands_path, class: 'nav-link'  %>
+        </li>
+      </ul>
+
+      <div class="collapse navbar-collapse show" id="navbarWithDropdown">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle btn btn-outline-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="color:gray"><%= current_user.email %></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><%= link_to "Editar Perfil", edit_user_registration_path, class: "btn" %></li>
+                <hr>
+                <li><%= link_to "Cerrar Sesión", destroy_user_session_path, class: "btn",  method: :delete  %></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</nav>

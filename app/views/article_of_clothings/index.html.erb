@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Article Of Clothings</h1>
+<br>
+<form method="GET" action="/brands">
+  Marca: <input type="text" name="filter" />
+  <input type="submit" />
+</form>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= link_to "type of garment", article_of_clothings_path(:sort => true, :by => "type_of_garment ", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "colour", article_of_clothings_path(:sort => true, :by => "colour", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "description", article_of_clothings_path(:sort => true, :by => "description", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th>Brand</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @article_of_clothings.each do |article_of_clothing| %>
+      <tr>
+        <td><%= article_of_clothing.type_of_garment %></td>
+        <td><%= article_of_clothing.colour %></td>
+        <td><%= article_of_clothing.description %></td>
+        <td><%= article_of_clothing.brand.name %></td>
+        <td><%= link_to 'Show', article_of_clothing %></td>
+        <td><%= link_to 'Edit', edit_article_of_clothing_path(article_of_clothing) %></td>
+        <td><%= link_to 'Destroy', article_of_clothing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @article_of_clothings %>
+
+<br>
+
+<%= link_to 'New Article Of Clothing', new_article_of_clothing_path %>

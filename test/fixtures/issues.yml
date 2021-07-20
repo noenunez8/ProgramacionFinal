@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_issue: 2021-07-20
+  program_number: 1
+  program: one
+  article_of_clothing: one
+
+two:
+  date_of_issue: 2021-07-20
+  program_number: 1
+  program: two
+  article_of_clothing: two
